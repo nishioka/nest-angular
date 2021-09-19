@@ -17,4 +17,5 @@ FROM mcr.microsoft.com/vscode/devcontainers/typescript-node:0-${VARIANT}
 
 ENV TZ Asia/Tokyo
 
+# Install npm globally
 RUN npm install -g nx
