@@ -33,12 +33,12 @@
     "api-interfaces": {
       "tags": []
     },
-    "nest-angular": {
+    "angular-sample": {
       "tags": []
     },
-    "nest-angular-e2e": {
+    "angular-sample-e2e": {
       "tags": [],
-      "implicitDependencies": ["nest-angular"]
+      "implicitDependencies": ["angular-sample"]
     }
   }
 }

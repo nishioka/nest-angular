@@ -66,27 +66,27 @@
         }
       }
     },
-    "nest-angular": {
+    "angular-sample": {
       "projectType": "application",
-      "root": "apps/nest-angular",
-      "sourceRoot": "apps/nest-angular/src",
+      "root": "apps/angular-sample",
+      "sourceRoot": "apps/angular-sample/src",
       "prefix": "sample",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "outputs": ["{options.outputPath}"],
           "options": {
-            "outputPath": "dist/apps/nest-angular",
-            "index": "apps/nest-angular/src/index.html",
-            "main": "apps/nest-angular/src/main.ts",
-            "polyfills": "apps/nest-angular/src/polyfills.ts",
-            "tsConfig": "apps/nest-angular/tsconfig.app.json",
+            "outputPath": "dist/apps/angular-sample",
+            "index": "apps/angular-sample/src/index.html",
+            "main": "apps/angular-sample/src/main.ts",
+            "polyfills": "apps/angular-sample/src/polyfills.ts",
+            "tsConfig": "apps/angular-sample/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "apps/nest-angular/src/favicon.ico",
-              "apps/nest-angular/src/assets"
+              "apps/angular-sample/src/favicon.ico",
+              "apps/angular-sample/src/assets"
             ],
-            "styles": ["apps/nest-angular/src/styles.scss"],
+            "styles": ["apps/angular-sample/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -105,8 +105,8 @@
               ],
               "fileReplacements": [
                 {
-                  "replace": "apps/nest-angular/src/environments/environment.ts",
-                  "with": "apps/nest-angular/src/environments/environment.prod.ts"
+                  "replace": "apps/angular-sample/src/environments/environment.ts",
+                  "with": "apps/angular-sample/src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -126,57 +126,57 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "nest-angular:build:production"
+              "browserTarget": "angular-sample:build:production"
             },
             "development": {
-              "browserTarget": "nest-angular:build:development"
+              "browserTarget": "angular-sample:build:development"
             }
           },
           "defaultConfiguration": "development",
           "options": {
-            "proxyConfig": "apps/nest-angular/proxy.conf.json"
+            "proxyConfig": "apps/angular-sample/proxy.conf.json"
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "nest-angular:build"
+            "browserTarget": "angular-sample:build"
           }
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "apps/nest-angular/src/**/*.ts",
-              "apps/nest-angular/src/**/*.html"
+              "apps/angular-sample/src/**/*.ts",
+              "apps/angular-sample/src/**/*.html"
             ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/nest-angular"],
+          "outputs": ["coverage/apps/angular-sample"],
           "options": {
-            "jestConfig": "apps/nest-angular/jest.config.js",
+            "jestConfig": "apps/angular-sample/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "nest-angular-e2e": {
-      "root": "apps/nest-angular-e2e",
-      "sourceRoot": "apps/nest-angular-e2e/src",
+    "angular-sample-e2e": {
+      "root": "apps/angular-sample-e2e",
+      "sourceRoot": "apps/angular-sample-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/nest-angular-e2e/cypress.json",
-            "devServerTarget": "nest-angular:serve:development",
-            "tsConfig": "apps/nest-angular-e2e/tsconfig.json"
+            "cypressConfig": "apps/angular-sample-e2e/cypress.json",
+            "devServerTarget": "angular-sample:serve:development",
+            "tsConfig": "apps/angular-sample-e2e/tsconfig.json"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "nest-angular:serve:production"
+              "devServerTarget": "angular-sample:serve:production"
             }
           }
         },
@@ -184,7 +184,7 @@
           "builder": "@nrwl/linter:eslint",
           "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": ["apps/nest-angular-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": ["apps/angular-sample-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -221,5 +221,5 @@
       "style": "scss"
     }
   },
-  "defaultProject": "nest-angular"
+  "defaultProject": "angular-sample"
 }
