@@ -27,18 +27,21 @@
     ]
   },
   "projects": {
-    "api": {
-      "tags": []
-    },
-    "api-interfaces": {
-      "tags": []
-    },
     "angular-sample": {
       "tags": []
     },
     "angular-sample-e2e": {
       "tags": [],
       "implicitDependencies": ["angular-sample"]
+    },
+    "api": {
+      "tags": []
+    },
+    "api-infra-server": {
+      "tags": []
+    },
+    "api-interfaces": {
+      "tags": []
     }
   }
 }
