@@ -210,6 +210,28 @@
           }
         }
       }
+    },
+    "api-logging": {
+      "root": "libs/api/logging",
+      "sourceRoot": "libs/api/logging/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/logging/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/logging"],
+          "options": {
+            "jestConfig": "libs/api/logging/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

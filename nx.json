@@ -32,15 +32,25 @@
     },
     "angular-sample-e2e": {
       "tags": [],
-      "implicitDependencies": ["angular-sample"]
+      "implicitDependencies": [
+        "angular-sample"
+      ]
     },
     "api": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": [
+        "api-infra-server",
+        "api-interfaces",
+        "api-logging"
+      ]
     },
     "api-infra-server": {
       "tags": []
     },
     "api-interfaces": {
+      "tags": []
+    },
+    "api-logging": {
       "tags": []
     }
   }

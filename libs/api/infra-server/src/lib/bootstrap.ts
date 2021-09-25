@@ -10,6 +10,8 @@ import * as yaml from 'js-yaml';
 import * as fs from 'fs';
 import * as yargs from 'yargs';
 
+import { logger, LoggingModule } from '@sample/api-logging';
+
 import { InfraModule } from './infra/infra.module';
 
 type RunServerOptions = {
@@ -27,7 +29,9 @@ type RunServerOptions = {
 }
 
 export const createApp = async (options: RunServerOptions) => {
-  const app = await NestFactory.create(InfraModule.forRoot(options.appModule));
+  const app = await NestFactory.create(InfraModule.forRoot(options.appModule), {
+    logger: LoggingModule.createLogger(),
+  });
   app.useGlobalPipes(
     new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }),
   );
@@ -43,7 +47,9 @@ const startServer = async (app: INestApplication, port = 3333) => {
   if (process.env.STATIC_SERVE) {
     servicePort = parseInt(process.env.PORT || '') || port;
   }
-  await app.listen(servicePort);
+  await app.listen(servicePort, () => {
+    logger.info(`Service listening for api at http://localhost:${servicePort}`, { context: 'Bootstrap' });
+  });
 }
 
 function setupOpenApi(
@@ -57,6 +63,7 @@ function setupOpenApi(
 }
 
 function generateSchema(filePath: string, document: OpenAPIObject) {
+  logger.info('Generating OpenAPI schema.', { context: 'Bootstrap' });
   fs.writeFileSync(filePath, yaml.safeDump(document, { noRefs: true }));
 }
 
