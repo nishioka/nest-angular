@@ -26,18 +26,18 @@ type RunServerOptions = {
   openApi?: Omit<OpenAPIObject, 'paths'>;
   // Hook up global interceptors to app
   interceptors?: NestInterceptor[];
-}
+};
 
 export const createApp = async (options: RunServerOptions) => {
   const app = await NestFactory.create(InfraModule.forRoot(options.appModule), {
     logger: LoggingModule.createLogger(),
   });
   app.useGlobalPipes(
-    new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }),
+    new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true })
   );
 
   return app;
-}
+};
 
 // apiはport:3333
 // コンテンツは別に起動するng serveがport:4200
@@ -48,17 +48,20 @@ const startServer = async (app: INestApplication, port = 3333) => {
     servicePort = parseInt(process.env.PORT || '') || port;
   }
   await app.listen(servicePort, () => {
-    logger.info(`Service listening for api at http://localhost:${servicePort}`, { context: 'Bootstrap' });
+    logger.info(
+      `Service listening for api at http://localhost:${servicePort}`,
+      { context: 'Bootstrap' }
+    );
   });
-}
+};
 
 function setupOpenApi(
   app: INestApplication,
   openApi: Omit<OpenAPIObject, 'paths'>,
-  swaggerPath?: string,
+  swaggerPath?: string
 ) {
-  const document = SwaggerModule.createDocument(app, openApi)
-  SwaggerModule.setup(swaggerPath ?? 'swagger', app, document)
+  const document = SwaggerModule.createDocument(app, openApi);
+  SwaggerModule.setup(swaggerPath ?? 'swagger', app, document);
   return document;
 }
 
@@ -89,8 +92,8 @@ export const bootstrap = async (options: RunServerOptions) => {
   if (options.interceptors) {
     options.interceptors.forEach((interceptor) => {
       app.useGlobalInterceptors(interceptor);
-    })
+    });
   }
 
   startServer(app, options.port);
-}
+};

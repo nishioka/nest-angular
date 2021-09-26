@@ -32,9 +32,7 @@
     },
     "angular-sample-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "angular-sample"
-      ]
+      "implicitDependencies": ["angular-sample"]
     },
     "api": {
       "tags": [],

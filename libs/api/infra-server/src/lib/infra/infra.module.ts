@@ -1,7 +1,7 @@
-import { Module, DynamicModule, Type } from '@nestjs/common'
-import { LoggingModule } from '@sample/api-logging'
+import { Module, DynamicModule, Type } from '@nestjs/common';
+import { LoggingModule } from '@sample/api-logging';
 
-import { InfraController } from './infra.controller'
+import { InfraController } from './infra.controller';
 
 @Module({
   controllers: [InfraController],
@@ -13,6 +13,6 @@ export class InfraModule {
     return {
       module: InfraModule,
       imports: [AppModule],
-    }
+    };
   }
 }

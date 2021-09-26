@@ -6,25 +6,26 @@ let logLevel = 'debug';
 let logFormat = format.combine(
   format.errors({ stack: true }),
   format.timestamp({
-    format: "YYYY-MM-DD HH:mm:ss"
+    format: 'YYYY-MM-DD HH:mm:ss',
   }),
   format.splat(),
-  utilities.format.nestLike('Attendance'),
+  utilities.format.nestLike('Attendance')
 );
 
 // Production and Testing overrides
-if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'testing') {
+if (
+  process.env.NODE_ENV === 'production' ||
+  process.env.NODE_ENV === 'testing'
+) {
   logLevel = process.env.LOG_LEVEL || 'info';
   logFormat = format.combine(
     format.errors({ stack: true }),
     format.timestamp(),
-    format.json(),
+    format.json()
   );
 }
 
-const logTransports = [
-  new transports.Console(),
-];
+const logTransports = [new transports.Console()];
 
 export const logger = createLogger({
   level: logLevel,
@@ -34,4 +35,4 @@ export const logger = createLogger({
   exitOnError: true,
   exceptionHandlers: logTransports,
   rejectionHandlers: logTransports,
-} as LoggerOptions)
+} as LoggerOptions);
