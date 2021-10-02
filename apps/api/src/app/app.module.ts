@@ -1,11 +1,19 @@
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { SequelizeModule } from '@nestjs/sequelize';
 import * as path from 'path';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { UserModule, AnnouncementModule } from '@sample/api-repositories';
 
-const imports = [];
+import { SequelizeOptions } from '../environments';
+
+const imports = [
+  SequelizeModule.forRootAsync({
+    useClass: SequelizeOptions,
+  }),
+  UserModule,
+  AnnouncementModule,
+];
 
 // port:4200でdistを配信する
 // apiのリクエストはbootstrapでlistenするので除外
@@ -20,7 +28,7 @@ if (process.env.STATIC_SERVE) {
 
 @Module({
   imports,
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

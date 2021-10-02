@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@sample/api-interfaces';
+import { AnnouncementDto } from '@sample/dto';
 
 @Component({
   selector: 'sample-root',
@@ -8,6 +8,6 @@ import { Message } from '@sample/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
+  hello$ = this.http.get<AnnouncementDto>('/api/hello');
   constructor(private http: HttpClient) {}
 }

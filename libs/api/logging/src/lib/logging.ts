@@ -9,7 +9,7 @@ let logFormat = format.combine(
     format: 'YYYY-MM-DD HH:mm:ss',
   }),
   format.splat(),
-  utilities.format.nestLike('Attendance')
+  utilities.format.nestLike('Sample')
 );
 
 // Production and Testing overrides

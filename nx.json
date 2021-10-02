@@ -32,23 +32,34 @@
     },
     "angular-sample-e2e": {
       "tags": [],
-      "implicitDependencies": ["angular-sample"]
+      "implicitDependencies": [
+        "angular-sample",
+        "dto"
+      ]
     },
     "api": {
       "tags": [],
       "implicitDependencies": [
         "api-infra-server",
-        "api-interfaces",
-        "api-logging"
+        "api-logging",
+        "api-models",
+        "api-repositories",
+        "dto"
       ]
     },
     "api-infra-server": {
       "tags": []
     },
-    "api-interfaces": {
+    "api-logging": {
       "tags": []
     },
-    "api-logging": {
+    "api-models": {
+      "tags": []
+    },
+    "api-repositories": {
+      "tags": []
+    },
+    "dto": {
       "tags": []
     }
   }

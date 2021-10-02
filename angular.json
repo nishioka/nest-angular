@@ -22,7 +22,13 @@
               "apps/angular-sample/src/assets"
             ],
             "styles": ["apps/angular-sample/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "fileReplacements": [
+              {
+                "replace": "libs/shared/dto/src/lib/decorators-nest.ts",
+                "with": "libs/shared/dto/src/lib/decorators-angular.ts"
+              }
+            ]
           },
           "configurations": {
             "production": {
@@ -197,20 +203,6 @@
         }
       }
     },
-    "api-interfaces": {
-      "root": "libs/api-interfaces",
-      "sourceRoot": "libs/api-interfaces/src",
-      "projectType": "library",
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
-          "options": {
-            "lintFilePatterns": ["libs/api-interfaces/**/*.ts"]
-          }
-        }
-      }
-    },
     "api-logging": {
       "root": "libs/api/logging",
       "sourceRoot": "libs/api/logging/src",
@@ -228,6 +220,72 @@
           "outputs": ["coverage/libs/api/logging"],
           "options": {
             "jestConfig": "libs/api/logging/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-models": {
+      "root": "libs/api/models",
+      "sourceRoot": "libs/api/models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/models/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/models"],
+          "options": {
+            "jestConfig": "libs/api/models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-repositories": {
+      "root": "libs/api/repositories",
+      "sourceRoot": "libs/api/repositories/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/repositories/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/repositories"],
+          "options": {
+            "jestConfig": "libs/api/repositories/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "dto": {
+      "root": "libs/shared/dto",
+      "sourceRoot": "libs/shared/dto/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/shared/dto/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/dto"],
+          "options": {
+            "jestConfig": "libs/shared/dto/jest.config.js",
             "passWithNoTests": true
           }
         }
