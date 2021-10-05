@@ -32,10 +32,7 @@
     },
     "angular-sample-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "angular-sample",
-        "dto"
-      ]
+      "implicitDependencies": ["angular-sample", "dto"]
     },
     "api": {
       "tags": [],
@@ -60,6 +57,12 @@
       "tags": []
     },
     "dto": {
+      "tags": []
+    },
+    "populate": {
+      "tags": []
+    },
+    "shared-test-data": {
       "tags": []
     }
   }

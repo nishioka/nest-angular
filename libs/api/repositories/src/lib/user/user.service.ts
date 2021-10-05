@@ -5,6 +5,7 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
+import { InjectModel } from '@nestjs/sequelize';
 import {
   Op,
   FindOptions,
@@ -13,7 +14,6 @@ import {
   OrderItem,
   Order,
 } from 'sequelize';
-import { InjectModel } from '@nestjs/sequelize';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ja';
 dayjs.locale('ja');
@@ -30,17 +30,9 @@ const include: IncludeOptions[] = [
   {
     attributes: ['id', 'code', 'description'],
   },
-  {
-    model: User,
-    as: 'authorizations',
-    attributes: ['id', 'employeeNo', 'name', 'email'],
-    through: {
-      attributes: [],
-    },
-  },
 ];
 
-const order: OrderItem[] = [['authorizations', 'employeeNo', 'ASC']];
+const order: OrderItem[] = [['employeeNo', 'ASC']];
 
 @Injectable()
 export class UserService {
@@ -51,7 +43,7 @@ export class UserService {
 
   async findAll(): Promise<User[]> {
     const results = await this.userRepository.findAll<User>({
-      include,
+      // include,
       order,
     });
 
@@ -60,15 +52,15 @@ export class UserService {
 
   async findOne(condition: FindUserDto): Promise<User> {
     // console.log('UserService/findOne/condition:', condition);
-    const query: any = {};
-    if (condition.id) query.id = condition.id;
-    if (condition.employeeNo) query.employeeNo = condition.employeeNo;
-    if (condition.name) query.name = condition.name;
-    if (condition.email) query.email = condition.email;
+    const where: WhereOptions = {};
+    if (condition.id) where.id = condition.id;
+    if (condition.employeeNo) where.employeeNo = condition.employeeNo;
+    if (condition.name) where.name = condition.name;
+    if (condition.email) where.email = condition.email;
 
     const result = await this.userRepository.findOne<User>({
-      where: query,
-      include,
+      where,
+      // include,
       order,
     });
     if (!result) {
@@ -85,7 +77,7 @@ export class UserService {
     const result = await this.userRepository.findByPk<User>(id);
     if (!result) {
       throw new HttpException(
-        '条件に一致する社員が存在しません',
+        '一致するidの社員が存在しません',
         HttpStatus.BAD_REQUEST
       );
     }
@@ -99,7 +91,7 @@ export class UserService {
     });
     if (!result) {
       throw new HttpException(
-        '条件に一致する社員が存在しません',
+        '一致するemailの社員が存在しません',
         HttpStatus.BAD_REQUEST
       );
     }
@@ -114,7 +106,7 @@ export class UserService {
     });
     if (!result) {
       throw new HttpException(
-        '条件に一致する社員が存在しません',
+        '一致するemployeeNoの社員が存在しません',
         HttpStatus.BAD_REQUEST
       );
     }
@@ -128,34 +120,7 @@ export class UserService {
     });
     if (!result) {
       throw new HttpException(
-        '条件に一致する社員が存在しません',
-        HttpStatus.BAD_REQUEST
-      );
-    }
-
-    return result;
-  }
-
-  async findToken(token: string) {
-    // console.log('UserService/findToken/token:', token);
-    const result = await this.userRepository.findOne<User>({
-      where: {
-        [Op.and]: [
-          {
-            resetPasswordToken: token,
-          },
-          {
-            resetPasswordExpires: {
-              [Op.gt]: Date.now(),
-            },
-          },
-        ],
-      },
-    });
-    // console.log('UserService/findToken/user:', user);
-    if (!result) {
-      throw new HttpException(
-        '条件に一致する社員が存在しません',
+        '一致するnameの社員が存在しません',
         HttpStatus.BAD_REQUEST
       );
     }

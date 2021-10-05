@@ -1,5 +1,13 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import {
+  Op,
+  FindOptions,
+  IncludeOptions,
+  WhereOptions,
+  OrderItem,
+  Order,
+} from 'sequelize';
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ja';
 dayjs.locale('ja');
@@ -27,7 +35,7 @@ export class AnnouncementService {
         {
           model: User,
           as: 'author',
-          attributes: ['employeeNo', 'name', 'role'],
+          attributes: ['employeeNo', 'name'],
         },
       ],
     });
@@ -36,18 +44,18 @@ export class AnnouncementService {
   }
 
   async findOne(condition: FindAnnouncementDto): Promise<Announcement> {
-    const query: any = {};
-    if (condition.id) query.id = condition.id;
-    if (condition.content) query.content = condition.content;
-    if (condition.authorId) query.authorId = condition.authorId;
+    const where: WhereOptions = {};
+    if (condition.id) where.id = condition.id;
+    if (condition.content) where.content = condition.content;
+    if (condition.authorId) where.authorId = condition.authorId;
 
     const result = await this.announcementRepository.findOne<Announcement>({
-      where: query,
+      where,
       include: [
         {
           model: User,
           as: 'author',
-          attributes: ['employeeNo', 'name', 'role'],
+          attributes: ['employeeNo', 'name'],
         },
       ],
     });

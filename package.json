@@ -7,10 +7,12 @@
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "serve": "nx run-many --target=serve --projects=api,angular-sample --parallel=true",
+    "serve:static": "cross-env STATIC_SERVE=true nx serve api",
     "serve:angular-sample": "nx serve angular-sample",
     "serve:api": "nx serve api",
     "build": "nx build",
     "test": "nx test",
+    "populate": "cross-env DB_SYNC_FORCE=true nx serve populate",
     "prettier": "npx prettier --write ."
   },
   "repository": {
@@ -45,6 +47,8 @@
     "@nrwl/angular": "12.9.0",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
+    "cross-env": "^7.0.3",
+    "dayjs": "^1.10.7",
     "nest-winston": "^1.6.0",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
