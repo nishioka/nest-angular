@@ -26,47 +26,5 @@
       }
     ]
   },
-  "projects": {
-    "angular-sample": {
-      "tags": []
-    },
-    "angular-sample-e2e": {
-      "tags": [],
-      "implicitDependencies": ["angular-sample", "dto"]
-    },
-    "api": {
-      "tags": [],
-      "implicitDependencies": [
-        "api-infra-server",
-        "api-logging",
-        "api-models",
-        "api-repositories",
-        "dto"
-      ]
-    },
-    "api-infra-server": {
-      "tags": []
-    },
-    "api-logging": {
-      "tags": []
-    },
-    "api-models": {
-      "tags": []
-    },
-    "api-populate": {
-      "tags": []
-    },
-    "api-repositories": {
-      "tags": []
-    },
-    "dto": {
-      "tags": []
-    },
-    "populate": {
-      "tags": []
-    },
-    "shared-test-data": {
-      "tags": []
-    }
-  }
+  "projects": {}
 }

@@ -1,0 +1,23 @@
+{
+  "root": "libs/api/repositories",
+  "sourceRoot": "libs/api/repositories/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/api/repositories/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/repositories"],
+      "options": {
+        "jestConfig": "libs/api/repositories/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
