@@ -6,15 +6,14 @@ import {
   AnnouncementModule,
 } from '@sample/api-repositories'
 
-import { PopulateAnnouncementService } from './service/announcement.populate.service';
-import { PopulateUserService } from './service/user.populate.service';
+import { PopulateAnnouncementService, PopulateUserService } from '@sample/api-populate';
 
 import { SequelizeOptions } from '../environments';
 
 @Module({
   imports: [
     SequelizeModule.forRootAsync({
-    useClass: SequelizeOptions,
+      useClass: SequelizeOptions,
     }),
     AnnouncementModule,
     UserModule,

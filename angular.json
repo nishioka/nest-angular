@@ -181,6 +181,27 @@
         }
       }
     },
+    "api-e2e": {
+      "root": "apps/api-e2e",
+      "sourceRoot": "apps/api-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/api-e2e/jest.config.js",
+            "tsconfig": "apps/api-e2e/tsconfig.spec.json",
+            "runInBand": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/api-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
     "api-infra-server": {
       "root": "libs/api/infra-server",
       "sourceRoot": "libs/api/infra-server/src",
@@ -242,6 +263,28 @@
           "outputs": ["coverage/libs/api/models"],
           "options": {
             "jestConfig": "libs/api/models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "api-populate": {
+      "root": "libs/api/populate",
+      "sourceRoot": "libs/api/populate/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/populate/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/populate"],
+          "options": {
+            "jestConfig": "libs/api/populate/jest.config.js",
             "passWithNoTests": true
           }
         }

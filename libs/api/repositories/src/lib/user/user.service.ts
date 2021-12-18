@@ -138,7 +138,7 @@ export class UserService {
     await user.save();
 
     const result = await this.findOne({ id: user.id });
-
+console.log('UserService/create/result: ', result);
     return result;
   }
 

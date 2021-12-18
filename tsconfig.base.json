@@ -19,6 +19,7 @@
       "@sample/api-logging": ["libs/api/logging/src/index.ts"],
       "@sample/api-models": ["libs/api/models/src/index.ts"],
       "@sample/api-repositories": ["libs/api/repositories/src/index.ts"],
+      "@sample/api-populate": ["libs/api/populate/src/index.ts"],
 
       "@sample/dto": ["libs/shared/dto/src/index.ts"],
       "@sample/test-data": ["libs/shared/test-data/src/index.ts"]

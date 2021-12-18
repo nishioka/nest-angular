@@ -21,10 +21,11 @@ export class PopulateUserService {
   }
 
   async populate() {
+console.log('PopulateUserService/populate/this.createDatas: ', this.createDatas);
     for (const element of this.createDatas) {
-      const result = await this.userService.create(JSON.parse(JSON.stringify(element)));
+      const result = await this.userService.create(element);
       this.resultDatas.find((user) => user.employeeNo === result.employeeNo).id = result.id;
+console.log('PopulateUserService/populate/employeeNo: ', result.employeeNo);
     }
-// console.log('PopulateUser/populate/resultDatas:', this.resultDatas);
   }
 }

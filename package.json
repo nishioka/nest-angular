@@ -10,6 +10,8 @@
     "serve:static": "cross-env STATIC_SERVE=true nx serve api",
     "serve:angular-sample": "nx serve angular-sample",
     "serve:api": "nx serve api",
+    "e2e:api": "nx e2e api-e2e",
+    "e2e:angular-sample": "nx e2e angular-sample-e2e",
     "build": "nx build",
     "test": "nx test",
     "populate": "cross-env DB_SYNC_FORCE=true nx serve populate",
@@ -55,6 +57,7 @@
     "rxjs": "~7.3.0",
     "sequelize": "^6.6.5",
     "sequelize-typescript": "^2.1.0",
+    "supertest": "^6.1.6",
     "tslib": "^2.3.1",
     "winston": "^3.3.3",
     "zone.js": "~0.11.4"
