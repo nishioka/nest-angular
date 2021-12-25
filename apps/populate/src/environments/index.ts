@@ -22,7 +22,7 @@ export class SequelizeOptions implements SequelizeOptionsFactory {
       };
     }
     this.config['database']['autoLoadModels'] = true;
-console.log('SequelizeOptions/createSequelizeOptions/this.config: ', this.config);
+// console.log('SequelizeOptions/createSequelizeOptions/this.config: ', this.config);
     return this.config.database;
   }
 }

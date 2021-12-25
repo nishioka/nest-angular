@@ -51,7 +51,7 @@ export class UserService {
   }
 
   async findOne(condition: FindUserDto): Promise<User> {
-    // console.log('UserService/findOne/condition:', condition);
+// console.log('UserService/findOne/condition:', condition);
     const where: WhereOptions = {};
     if (condition.id) where.id = condition.id;
     if (condition.employeeNo) where.employeeNo = condition.employeeNo;
@@ -100,7 +100,7 @@ export class UserService {
   }
 
   async findByEmployeeNo(employeeNo: string): Promise<User> {
-    // console.log('UserService/findByEmployeeNo/employeeNo:', employeeNo)
+// console.log('UserService/findByEmployeeNo/employeeNo:', employeeNo)
     const result = await this.userRepository.findOne<User>({
       where: { employeeNo },
     });
@@ -138,7 +138,7 @@ export class UserService {
     await user.save();
 
     const result = await this.findOne({ id: user.id });
-console.log('UserService/create/result: ', result);
+// console.log('UserService/create/result: ', result);
     return result;
   }
 

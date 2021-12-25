@@ -27,7 +27,7 @@ export class PopulateAnnouncementService {
       resultData.id = result.id;
       resultData.authorId = result.authorId;
       resultData.createdAt = dayjs(result.createdAt).toISOString();
-console.log('PopulateAnnouncementService/populate/content: ', result.content);
+// console.log('PopulateAnnouncementService/populate/content: ', result.content);
     }
   }
 

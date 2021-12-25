@@ -1,4 +1,4 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 
 import {
@@ -6,7 +6,7 @@ import {
   AnnouncementModule,
 } from '@sample/api-repositories'
 
-import { PopulateAnnouncementService, PopulateUserService } from '@sample/api-populate';
+import { PopulateModule } from '@sample/api-populate';
 
 import { SequelizeOptions } from '../environments';
 
@@ -17,24 +17,8 @@ import { SequelizeOptions } from '../environments';
     }),
     AnnouncementModule,
     UserModule,
-  ],
-  providers: [
-    PopulateAnnouncementService,
-    PopulateUserService
-  ],
-  exports: [
-    PopulateAnnouncementService,
-    PopulateUserService
+    PopulateModule,
   ],
 })
-export class AppModule implements OnModuleInit {
-  constructor(
-    private readonly populateAnnouncementService: PopulateAnnouncementService,
-    private readonly populateUserService: PopulateUserService,
-  ) {}
-
-  async onModuleInit() {
-    await this.populateUserService.populate();
-    await this.populateAnnouncementService.populate();
-  }
+export class AppModule {
 }
