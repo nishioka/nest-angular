@@ -25,5 +25,8 @@
     }
   },
   "tags": [],
-  "implicitDependencies": ["angular-sample", "dto"]
+  "implicitDependencies": [
+    "angular-sample",
+    "shared-dto"
+  ]
 }

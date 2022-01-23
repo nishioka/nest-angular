@@ -15,13 +15,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@sample/api-config": ["libs/api/config/src/index.ts"],
       "@sample/api-infra-server": ["libs/api/infra-server/src/index.ts"],
       "@sample/api-logging": ["libs/api/logging/src/index.ts"],
       "@sample/api-models": ["libs/api/models/src/index.ts"],
       "@sample/api-populate": ["libs/api/populate/src/index.ts"],
       "@sample/api-repositories": ["libs/api/repositories/src/index.ts"],
-      "@sample/dto": ["libs/shared/dto/src/index.ts"],
-      "@sample/test-data": ["libs/shared/test-data/src/index.ts"]
+      "@sample/shared-dto": ["libs/shared/dto/src/index.ts"],
+      "@sample/shared-test-data": ["libs/shared/test-data/src/index.ts"],
+      "@sample/web-layout": ["libs/web/layout/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

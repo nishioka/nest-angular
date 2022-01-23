@@ -4,14 +4,16 @@
     "angular-sample": "apps/angular-sample",
     "angular-sample-e2e": "apps/angular-sample-e2e",
     "api": "apps/api",
+    "api-config": "libs/api/config",
     "api-e2e": "apps/api-e2e",
     "api-infra-server": "libs/api/infra-server",
     "api-logging": "libs/api/logging",
     "api-models": "libs/api/models",
     "api-populate": "libs/api/populate",
     "api-repositories": "libs/api/repositories",
-    "dto": "libs/shared/dto",
     "populate": "apps/populate",
-    "shared-test-data": "libs/shared/test-data"
+    "shared-dto": "libs/shared/dto",
+    "shared-test-data": "libs/shared/test-data",
+    "web-layout": "libs/web/layout"
   }
 }

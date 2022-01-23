@@ -33,7 +33,6 @@ export class AppModule implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-console.log('AppModule/onModuleInit');
     await this.populateUserService.populate();
     await this.populateAnnouncementService.populate();
   }

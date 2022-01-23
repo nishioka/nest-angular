@@ -9,7 +9,10 @@ import { AnnouncementService } from './announcement.service';
 import { UserModule } from '../user/user.module';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Announcement]), UserModule],
+  imports: [
+    SequelizeModule.forFeature([Announcement]),
+    UserModule
+  ],
   controllers: [AnnouncementController],
   providers: [AnnouncementService],
   exports: [AnnouncementService],

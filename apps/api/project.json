@@ -54,6 +54,6 @@
     "api-logging",
     "api-models",
     "api-repositories",
-    "dto"
+    "shared-dto"
   ]
 }

@@ -1,13 +1,16 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { SequelizeModule } from '@nestjs/sequelize';
 import * as path from 'path';
 
+import { SequelizeOptions, LdapOptions } from '@sample/api-config';
 import { UserModule, AnnouncementModule } from '@sample/api-repositories';
 
-import { SequelizeOptions } from '../environments';
-
 const imports = [
+  ConfigModule.forRoot({
+    load: [LdapOptions],
+  }),
   SequelizeModule.forRootAsync({
     useClass: SequelizeOptions,
   }),

@@ -6,38 +6,26 @@ This project was generated using [Nx](https://nx.dev).
 
 🔎 **Smart, Extensible Build Framework**
 
-## Quick Start & Documentation
-
-[Nx Documentation](https://nx.dev/angular)
-
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
-
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
+## Used libraries and technologies 
 
 - [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
 - [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
+- [Docker](https://docker.com/)
 - [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+- [Nx](https://nx.dev).
+- [Cypress](https://cypress.io).
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+## Docker container
 
-## Generate an application
+api: Development
+
+db: Database(postgres)
+
+samba: LDAP(Active Directory)
+
+cypress: Testing
+
+## Nx commands
 
 Run `ng g @nrwl/angular:app my-app` to generate an application.
 

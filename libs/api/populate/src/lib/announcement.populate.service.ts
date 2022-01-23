@@ -4,8 +4,8 @@ import 'dayjs/locale/ja';
 dayjs.locale('ja');
 
 import { AnnouncementService } from '@sample/api-repositories';
-import { CreateAnnouncementDto } from '@sample/dto';
-import { announcementData } from '@sample/test-data';
+import { CreateAnnouncementDto } from '@sample/shared-dto';
+import { announcementData } from '@sample/shared-test-data';
 
 @Injectable()
 export class PopulateAnnouncementService {

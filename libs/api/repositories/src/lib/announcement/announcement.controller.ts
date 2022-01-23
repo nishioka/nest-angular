@@ -21,7 +21,7 @@ import {
   AnnouncementDto,
   CreateAnnouncementDto,
   UpdateAnnouncementDto,
-} from '@sample/dto';
+} from '@sample/shared-dto';
 
 import { AnnouncementService } from './announcement.service';
 

@@ -3,7 +3,7 @@ import { INestApplication, HttpStatus } from '@nestjs/common';
 import * as request from 'supertest';
 
 import { AppModule } from './app/app.module';
-import { UpdateUserDto } from '@sample/dto';
+import { UpdateUserDto } from '@sample/shared-dto';
 
 import { TestDataUser } from './setup/user.setup';
 

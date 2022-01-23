@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AnnouncementDto } from '@sample/dto';
+import { AnnouncementDto } from '@sample/shared-dto';
 
 @Component({
   selector: 'sample-root',

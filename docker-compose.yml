@@ -14,7 +14,7 @@ services:
   samba:
     build:
       context: .
-      dockerfile: ./samba/Dockerfile
+      dockerfile: ./docker/samba/Dockerfile
     restart: always
     privileged: true
     ports:
@@ -29,11 +29,12 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./api/Dockerfile
+      dockerfile: ./docker/api/Dockerfile
     restart: always
     ports:
       - 4200:4200
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - node_modules:/workspace/node_modules
     environment:
       PORT: 4200
@@ -49,4 +50,4 @@ volumes:
 
 secrets:
   samba-admin-password:
-    file: ./samba/secrets.txt
+    file: ./docker/samba/secrets.txt

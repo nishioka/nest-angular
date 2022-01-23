@@ -1,19 +1,16 @@
 import {
   Injectable,
-  Inject,
-  forwardRef,
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import { InjectModel } from '@nestjs/sequelize';
 import {
-  Op,
-  FindOptions,
   IncludeOptions,
   WhereOptions,
   OrderItem,
-  Order,
 } from 'sequelize';
+import * as ldapjs from 'ldapjs'
 import * as dayjs from 'dayjs';
 import 'dayjs/locale/ja';
 dayjs.locale('ja');
@@ -24,7 +21,7 @@ import {
   CreateUserDto,
   UpdateUserDto,
   FindUserDto,
-} from '@sample/dto';
+} from '@sample/shared-dto';
 
 const include: IncludeOptions[] = [
   {
@@ -38,7 +35,8 @@ const order: OrderItem[] = [['employeeNo', 'ASC']];
 export class UserService {
   constructor(
     @InjectModel(User)
-    private readonly userRepository: typeof User
+    private readonly userRepository: typeof User,
+    private configService: ConfigService,
   ) {}
 
   async findAll(): Promise<User[]> {
@@ -48,6 +46,69 @@ export class UserService {
     });
 
     return results;
+  }
+
+  async getADUserList(): Promise<any> {
+    return new Promise((resolve, reject) => {
+// console.log('AuthService/getADDivisionList/this.options: ', this.options);
+      const ldapConfig = this.configService.get('ldap');
+      const ldap = ldapjs.createClient({
+          url: ldapConfig.url,
+          timeout: 4000,
+          connectTimeout: 4000,
+      });
+      ldap.on('connectError', (err) => {
+        console.log('AuthService/getADDivisionList/createClient/connectError: ', err);
+        return reject();
+      });
+      ldap.on('error', (err) => {
+        console.log('AuthService/getADDivisionList/createClient/error: ', err);
+        return reject();
+      });
+
+      ldap.on('connect', () => {
+// console.log('AuthService/getADDivisionList/connect: ');
+        ldap.bind(ldapConfig.bindDN, ldapConfig.bindCredentials, (bindErr) => {
+          if (bindErr) {
+            console.log('AuthService/getADDivisionList/connect/bindErr: ', bindErr);
+            if (bindErr.name === 'InvalidCredentialsError') {
+                return reject();
+            } else {
+                return;
+            }
+          }
+          ldap.search(ldapConfig.searchBase, {
+            scope: 'sub',
+            filter: '(&(objectCategory=person)(objectClass=user)(objectClass=organizationalPerson)(givenName=*)(sn=*))',
+            // paged: false,
+            // sizeLimit: 1
+          }, (searchErr, searchResult) => {
+// console.log('AuthService/getADDivisionList/search/searchResult: ');
+            if (searchErr) {
+                console.log('AuthService/getADDivisionList/search/searchErr: ', searchErr);
+                return reject();
+            }
+            const users = [];
+            searchResult.on('searchEntry', (entry) => {
+              users.push({
+                cn: entry.object.cn,
+                dn: entry.object.dn,
+                sn: entry.object.sn,
+                givenName: entry.object.givenName,
+                mail: entry.object.mail,
+                name: entry.object.name,
+                sAMAccountName: entry.object.sAMAccountName,
+                userPrincipalName: entry.object.userPrincipalName,
+              });
+            });
+            searchResult.on('end', () => {
+              ldap.unbind();
+              return resolve(users);
+            });
+          });
+        });
+      });
+    });
   }
 
   async findOne(condition: FindUserDto): Promise<User> {

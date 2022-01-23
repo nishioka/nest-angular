@@ -3,7 +3,7 @@
 {
   "name": "Node.js & TypeScript",
   "dockerComposeFile": [
-    "../docker/docker-compose.yml",
+    "../docker-compose.yml",
     "./docker-compose.extend.yml"
   ],
   "service": "api",

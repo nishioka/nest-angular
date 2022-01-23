@@ -3,7 +3,7 @@ import { INestApplication, HttpStatus } from '@nestjs/common';
 import * as request from 'supertest';
 
 import { AppModule } from './app/app.module';
-import { CreateAnnouncementDto } from '@sample/dto';
+import { CreateAnnouncementDto } from '@sample/shared-dto';
 
 import { TestDataAnnouncement } from './setup/announcement.setup';
 

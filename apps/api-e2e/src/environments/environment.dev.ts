@@ -9,7 +9,7 @@ function loadYamlFile(filename) {
 
 let docker;
 try {
-  docker = loadYamlFile(path.resolve('./docker/docker-compose.yml')).services
+  docker = loadYamlFile(path.resolve('./docker-compose.yml')).services
     .api.environment;
 } catch (err) {
   console.error(err.message);

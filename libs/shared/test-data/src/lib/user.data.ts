@@ -7,27 +7,27 @@ export const userData = {
     name: '岡崎 真里',
     employeeNo: '0003',
     email: 'm.okazaki@test.co.jp',
-    password: 'test',
+    password: 'test_003',
   }, {
     name: '後藤 兵吉',
     employeeNo: '0004',
     email: 'h.gotou@test.co.jp',
-    password: 'test',
+    password: 'test_004',
   }, {
     name: '五十嵐 一典',
     employeeNo: '0001',
     email: 'k.igarashi@test.co.jp',
-    password: 'test',
+    password: 'test_001',
   }, {
     name: '広田 亜里香',
     employeeNo: '0002',
     email: 'a.hirota@test.co.jp',
-    password: 'test',
+    password: 'test_002',
   }, {
     name: '管理者',
     employeeNo: '9999',
     email: 'admin@test.co.jp',
-    password: 'admin',
+    password: 'examp1e_admin',
   }],
 
   resultDatas: [{

@@ -19,7 +19,7 @@ import {
   ParseUUIDPipe,
 } from '@nestjs/common';
 
-import { UserDto, UpdateUserDto } from '@sample/dto';
+import { UserDto, UpdateUserDto } from '@sample/shared-dto';
 
 import { UserService } from './user.service';
 

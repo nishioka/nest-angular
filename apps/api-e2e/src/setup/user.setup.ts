@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import {
   PopulateUserService,
 } from '@sample/api-populate'
-import { UserDto, CreateUserDto } from '@sample/dto';
+import { UserDto, CreateUserDto } from '@sample/shared-dto';
 
 @Injectable()
 export class TestDataUser {

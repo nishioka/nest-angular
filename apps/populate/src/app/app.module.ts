@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 
+import { SequelizeOptions, LdapOptions } from '@sample/api-config';
 import {
   UserModule,
   AnnouncementModule,
@@ -8,10 +10,12 @@ import {
 
 import { PopulateModule } from '@sample/api-populate';
 
-import { SequelizeOptions } from '../environments';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      load: [LdapOptions],
+    }),
     SequelizeModule.forRootAsync({
       useClass: SequelizeOptions,
     }),
@@ -20,5 +24,4 @@ import { SequelizeOptions } from '../environments';
     PopulateModule,
   ],
 })
-export class AppModule {
-}
+export class AppModule {}

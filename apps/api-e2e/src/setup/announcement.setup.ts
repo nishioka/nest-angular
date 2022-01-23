@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import {
   PopulateAnnouncementService,
 } from '@sample/api-populate'
-import { AnnouncementDto, CreateAnnouncementDto } from '@sample/dto';
+import { AnnouncementDto, CreateAnnouncementDto } from '@sample/shared-dto';
 
 @Injectable()
 export class TestDataAnnouncement {
